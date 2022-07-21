@@ -14,13 +14,13 @@ pipeline {
             }
         }
 
-        // stage('Build') {
-        //     steps {
-        //         sh 'pwd && cd src && /usr/local/bin/composer install'
-        //         docker.build("kyo88kyo/nginx", "-f Dockerfile-nginx .")
-        //         docker.build("kyo88kyo/blog")
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'pwd && cd src && /usr/bin/composer install'
+                sh 'docker build -t scuti-c/nginx -f Dockerfile-nginx  .'
+                sh 'docker build -t scuti-c/app .'
+            }
+        }
     }
 }
 
