@@ -7,13 +7,20 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Check sh') {
             steps {
-                sh 'pwd && cd src && /usr/local/bin/composer install'
-                docker.build("kyo88kyo/nginx", "-f Dockerfile-nginx .")
-                docker.build("kyo88kyo/blog")
+                sh 'pwd && cd src && pwd'
+                sh 'pwd'
             }
         }
+
+        // stage('Build') {
+        //     steps {
+        //         sh 'pwd && cd src && /usr/local/bin/composer install'
+        //         docker.build("kyo88kyo/nginx", "-f Dockerfile-nginx .")
+        //         docker.build("kyo88kyo/blog")
+        //     }
+        // }
     }
 }
 
